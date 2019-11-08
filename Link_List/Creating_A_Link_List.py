@@ -6,11 +6,6 @@ class node():
 class link_list():
     def __init__(self):
         self.head = None
-    def print_link_list(self):
-        temp_node = self.head
-        while(temp_node):
-            print(temp_node.node_data, end = " ")
-            temp_node = temp_node.next_node_link
 
 if __name__ == "__main__":
     x = int(input("Enter total no of data elements to be stored in link-list : "))
@@ -26,4 +21,3 @@ if __name__ == "__main__":
         else:
             previous_node.next_node_link = this_node
         previous_node =  this_node
-    my_link_list.print_link_list()
