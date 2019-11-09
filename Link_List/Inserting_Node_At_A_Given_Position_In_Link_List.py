@@ -15,14 +15,23 @@ class linked_list():
             print(temp.info, end = " ")
             temp = temp.link
         
-    def delete_node(self):
+    def insert_node_at(self, data, head):
+        at_index = int(input("Enter index for node where new node needs to be inserted : "))
+        temp_node = node(data)
+        temp = head
         count = 0
-        temp = self.head
-        find_value = int(input("Enter index for node which needs to be deleted : "))
-        while(temp and (count < (find_value - 1))):
-            count = (count + 1)
+        if(head == None):
+            head = temp_node
+            return
+        while (temp):
+            if(count == at_index - 1):
+                break
             temp = temp.link
-        temp.link = temp.link.link
+            count = (count + 1)
+        next = temp.link
+        temp.link = temp_node
+        temp_node.link = next
+        return head
 
 if __name__ == "__main__":
     x = np.random.randint(1,20)
@@ -40,5 +49,5 @@ if __name__ == "__main__":
 
     my_linked_list.print_linked_list()
     print(" ")
-    my_linked_list.delete_node()
+    my_linked_list.head = my_linked_list.insert_node_at(666, my_linked_list.head)
     my_linked_list.print_linked_list()

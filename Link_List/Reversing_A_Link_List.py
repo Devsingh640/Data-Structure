@@ -15,14 +15,20 @@ class linked_list():
             print(temp.info, end = " ")
             temp = temp.link
         
-    def delete_node(self):
-        count = 0
-        temp = self.head
-        find_value = int(input("Enter index for node which needs to be deleted : "))
-        while(temp and (count < (find_value - 1))):
-            count = (count + 1)
-            temp = temp.link
-        temp.link = temp.link.link
+    def revert_this(self, head):
+        previous = None
+        current = head
+        temp_node = node(None)
+        if(head == None):
+            head = temp_node
+            return head
+        while (current is not None):
+            next_node = current.link
+            current.link = previous
+            previous = current
+            current = next_node
+            head = previous
+        return head
 
 if __name__ == "__main__":
     x = np.random.randint(1,20)
@@ -40,5 +46,5 @@ if __name__ == "__main__":
 
     my_linked_list.print_linked_list()
     print(" ")
-    my_linked_list.delete_node()
+    my_linked_list.head = my_linked_list.revert_this(my_linked_list.head)
     my_linked_list.print_linked_list()
